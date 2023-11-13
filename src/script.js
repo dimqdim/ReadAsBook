@@ -1,15 +1,14 @@
-const textArea = document.querySelector(".text-col");
-const contentArea = document.querySelector(".content");
-const pageNumberArea = document.querySelector("#page-number");
-
 const PageProportion = 4 / 3;
 
 let readerOptions = {
   layout: "page", // отображение страницы (page, book, paper)
   isMaintainProportions: true, // необходимость соблюдать пропорции страницы
-  columnGap: 20
+  columnGap: 20,
 };
 
+let textArea;
+let contentArea;
+let pageNumberArea;
 let totalWidth;
 let totalPages;
 let totalColumns;
@@ -25,59 +24,66 @@ window.onresize = function () {
 };
 
 window.onload = function () {
+  initLayout();
   updateLayout();
 };
 
-textArea.onscroll = function () {
-  showPageNumber();
-};
+function initLayout() {
+  textArea = document.querySelector(".text-col");
+  contentArea = document.querySelector(".content");
+  pageNumberArea = document.querySelector("#page-number");
 
-const proportionBtn = document.querySelector("#btn-proportion");
-proportionBtn.onclick = function () {
-  readerOptions.isMaintainProportions = !readerOptions.isMaintainProportions;
-  updateLayout();
-};
+  textArea.onscroll = function () {
+    showPageNumber();
+  };
 
-const nextBtn = document.querySelector("#btn-next");
-nextBtn.onclick = function () {
-  nextprevClick(1);
-};
+  const proportionBtn = document.querySelector("#btn-proportion");
+  proportionBtn.onclick = function () {
+    readerOptions.isMaintainProportions = !readerOptions.isMaintainProportions;
+    updateLayout();
+  };
 
-const prevBtn = document.querySelector("#btn-prev");
-prevBtn.onclick = function () {
-  nextprevClick(-1);
-};
+  const nextBtn = document.querySelector("#btn-next");
+  nextBtn.onclick = function () {
+    nextprevClick(1);
+  };
 
-const firstBtn = document.querySelector("#btn-first");
-firstBtn.onclick = function () {
-  textArea.scrollTo(0, 0);
-  pageNumberArea.innerText = 1 + " / " + totalPages;
-};
+  const prevBtn = document.querySelector("#btn-prev");
+  prevBtn.onclick = function () {
+    nextprevClick(-1);
+  };
 
-const lastBtn = document.querySelector("#btn-last");
-lastBtn.onclick = function () {
-  textArea.scrollTo(textArea.scrollWidth, 0);
-  pageNumberArea.innerText = totalPages + " / " + totalPages;
-};
+  const firstBtn = document.querySelector("#btn-first");
+  firstBtn.onclick = function () {
+    textArea.scrollTo(0, 0);
+    pageNumberArea.innerText = 1 + " / " + totalPages;
+  };
 
-const curBtn = document.querySelector("#btn-cur");
-curBtn.onclick = function () {
-  nextprevClick(0);
-};
+  const lastBtn = document.querySelector("#btn-last");
+  lastBtn.onclick = function () {
+    textArea.scrollTo(textArea.scrollWidth, 0);
+    pageNumberArea.innerText = totalPages + " / " + totalPages;
+  };
 
-const pageBtn = document.querySelector("#btn-page");
-pageBtn.onclick = function () {
-  readerOptions.layout = "page";
-  updateLayout();
-  nextprevClick(0);
-};
+  const curBtn = document.querySelector("#btn-cur");
+  curBtn.onclick = function () {
+    nextprevClick(0);
+  };
 
-const bookBtn = document.querySelector("#btn-book");
-bookBtn.onclick = function () {
-  readerOptions.layout = "book";
-  updateLayout();
-  nextprevClick(0);
-};
+  const pageBtn = document.querySelector("#btn-page");
+  pageBtn.onclick = function () {
+    readerOptions.layout = "page";
+    updateLayout();
+    nextprevClick(0);
+  };
+
+  const bookBtn = document.querySelector("#btn-book");
+  bookBtn.onclick = function () {
+    readerOptions.layout = "book";
+    updateLayout();
+    nextprevClick(0);
+  };
+}
 
 function hyphenate(element) {
   let all = "[абвгдеёжзийклмнопрстуфхцчшщъыьэюя]",
