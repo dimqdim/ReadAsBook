@@ -1,0 +1,120 @@
+button {
+  padding: 4px 6px 4px 6px;
+}
+
+.wrapper {
+  font-family: sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: #ddd0c0;
+  text-align: center;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #ddd0c0;
+  text-align: center;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  background: #fff2e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.text-col {
+  column-width: 580px;
+  column-gap: 20px;
+  column-rule: 1px solid #ccc;
+  column-fill: auto;
+
+  text-indent: 1em;
+  text-align: justify;
+  line-height: 1.4em;
+  background: #fff2e0;
+  word-wrap: break-word;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  display: block;
+  overflow: auto;
+  width: 0px;
+  height: 0px;
+}
+
+#rabTitle {
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 8px;
+}
+
+#rabExcerpt {
+  font-size: 90%;
+  font-family: "standard";
+  text-align: left;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 8px;
+}
+
+#last-page {
+  margin:0;
+  padding 0;
+  border: solid 1px red;
+  min-height: 0;
+  display: none;
+}
+/*
+.text-col > p:last-of-type {
+    margin-right: 1.5em;
+    padding-right: 0;
+    column-gap: 0;
+}
+*/
+
+.text-container {
+  background: #fff2e1;
+  /*   overflow: auto; */
+  /*   width: 600px;
+  height: 800px; */
+  /*   dislpay: flex; */
+  /*   padding: 2em 2vw 1em; */
+}
+
+img {
+  float: left;
+  max-width: 30%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: 0 1em 1em 0;
+}
+
+cite {
+  color: #444;
+  display: block;
+  padding: 1em 2em;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
