@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="../font.css">
+  <link rel="stylesheet" href="../icofont.css">
+  <link rel="stylesheet" href="reader.css">
+  <script src="lib/Readability.js"></script>
+  <script src="lib/Readability-readerable.js"></script>
+  <script src="..\common.js"></script>
+  <script src="reader.js"></script> -->
+
+  <!-- Виджет переводчика Google-->
+  <!-- <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+
+  <!-- Виджет переводчика Яндекс-->
+  <!-- <script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=auto&widgetTheme=light&autoMode=true"></script> -->
+</head>
+
+<body>
+  <div class="main-pane">
+    <input type="checkbox" id="chk" class="menu">
+    <div id="mainMenu" class="main-menu">
+      <span class="option" title="Настройки"><a id="miSetup" href="#"><i class="icofont-options"></i></a></span>
+      <span class="option" title="Перевод статьи"><a id="miTranslate" href="#"><i class="icofont-globe"></i></a>
+        <div class="language">RU</div>
+      </span>
+      <span class="option" title="Печать статьи"><a id="miPrint" href="#"><i class="icofont-print"></i></a></span>
+      <span class="option" title="Сохранение в файл"><a id="miSave" href="#"><i class="icofont-diskette"></i></a></span>
+      <span class="option" title="Полный экран"><a id="miFullScreen" href="#"><i
+            class="icofont-maximize"></a></i></span>
+      <span class="option" title="Выход из режима чтения"><a id="miClose" href="#"><i
+            class="icofont-close-squared-alt"></a></i></span>
+    </div>
+    </input>
+    <label class="menuIcon" for="chk"><span class="icofont-navigation-menu"></span></label>
+    <label class="closeIcon"><span class="icofont-close-squared-alt"></span></label>
+    <div class="click-pane">
+      <table class="click-table" border="0">
+        <tr class="top-click">
+          <td data="up" colspan="3">
+            &nbsp;
+          </td>
+        </tr>
+        <tr class="main-click">
+          <td data="next">
+            &nbsp;
+          </td>
+          <td data="opt">
+            &nbsp;
+          </td>
+          <td data="prev">
+            &nbsp;
+          </td>
+        </tr>
+        <tr class="bottom-click">
+          <td data="next" colspan="3">
+            &nbsp;
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="setupPane" class="menu-pane">
+    <div class="option-caption">Настройки книжного читателя</div>
+    <div class="setup flex-row">
+      <div class="button flex layout-button" data="page">
+        <i class="icofont-page"></i>
+      </div>
+      <div class="button flex layout-button" data="book">
+        <i class="icofont-book"></i>
+      </div>
+      <div class="button flex layout-button" data="paper">
+        <i class="icofont-paper"></i>
+      </div>
+    </div>
+
+    <div class="setup flex-row">
+      <div class="button button-theme day" data="day">День</div>
+      <div class="button button-theme sepia" data="sepia">Сепия</div>
+      <div class="button button-theme night" data="night">Ночь</div>
+    </div>
+
+    <div class="setup flex-row">
+      <div class="border flex flex-row">
+        <div class="flex-row row">
+          <input id="chkFullScreen" type="checkbox"></input>
+          <label for="chkFullScreen" class="flex">Полный экран</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="setup flex-row">
+      <div class="border flex flex-row">
+        <div class="flex-row row">
+          <input id="chkLoadNext" type="checkbox"></input>
+          <label for="chkLoadNext" class="flex">Подгружать следующие страницы</label>
+        </div>
+        <div class="flex-row flex flex-end">
+          <input type="number" id="maxLoad" value="25" class="flex num"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="setup">
+      <div id="divFontFamily" class="row border">
+        <label for="fontFamilySelect">Шрифт:</label>
+        <select id="fontFamilySelect" class="select">
+          <option value="inherit" class="inherit">Стандартный</option>
+          <option value="serif" class="serif">С засечками</option>
+          <option value="sans-serif" class="sans-serif">Без засечек</option>
+          <option value="monospace" class="monospace">Моноширинный</option>
+          <option value="cursive" class="cursive">Курсивный</option>
+          <option value="fantasy" class="fantasy">Декоративный</option>
+        </select>
+      </div>
+      <div id="divFontSize" class="flex-row row-next border">
+        <label>Размер: <a id="fontSize" class="bold">100%</a></label>
+        <div class="button-font flex-row flex flex-end">
+          <div class="button min-button flex" data="-">A-</div>
+          <div class="button min-button flex" data="100">1:1</div>
+          <div class="button min-button flex" data="+">A+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="setup">
+      <div id="divTextLayout">
+        <div class="row border">
+          <div class="flex-row row-left">
+            <label>Выравнивание текста:</label>
+          </div>
+          <div class="flex-row">
+            <div class="flex button text-layout-button" data="left">
+              <i class="icofont-align-left"></i>
+            </div>
+            <div class="flex button text-layout-button" data="center">
+              <i class="icofont-align-center"></i>
+            </div>
+            <div class="flex button text-layout-button" data="right">
+              <i class="icofont-align-right"></i>
+            </div>
+            <div class="flex button text-layout-button" data="justify">
+              <i class="icofont-justify-all"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row border">
+          <div class="flex-row row-left">
+            <label>Область текста:</label>
+          </div>
+          <div class="flex-row">
+            <div class="flex button text-margin-button" data="+vert">
+              <i class="icofont-rounded-expand"></i>
+            </div>
+            <div class="flex button text-margin-button" data="-vert">
+              <i class="icofont-rounded-collapse"></i>
+            </div>
+            <div class="flex button text-margin-button" data="+horz">
+              <i class="icofont-simple-left"></i>
+              <i class="icofont-simple-right"></i>
+            </div>
+            <div class="flex button text-margin-button" data="-horz">
+              <i class="icofont-simple-right"></i>
+              <i class="icofont-simple-left"></i>
+            </div>
+          </div>
+          <div class="flex-row padding-top">
+            <div class="flex button text-margin-button" data="up">
+              <i class="icofont-simple-up"></i>
+            </div>
+            <div class="flex button text-margin-button" data="down">
+              <i class="icofont-simple-down"></i>
+            </div>
+            <div class="flex button text-margin-button" data="left">
+              <i class="icofont-simple-left"></i>
+            </div>
+            <div class="flex button text-margin-button" data="right">
+              <i class="icofont-simple-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border row-next">
+          <label>Межстрочный интервал:</label>
+          <div class="flex flex-row flex-end">
+            <div class="flex button min-button line-height-button" data="-">-
+            </div>
+            <div class="flex button min-button line-height-button" data="+">+
+            </div>
+          </div>
+        </div>
+        <div class="flex-row border row-next">
+          <div class="row-left">
+            <input id="chkLineIndent" type="checkbox"></input>
+            <label for="chkLineIndent">Отступ первой строки</label>
+          </div>
+          <div id="lineIndentButtons" class="flex flex-row flex-end">
+            <div class="flex button min-button line-indent-button" data="-">-
+            </div>
+            <div class="flex button min-button line-indent-button" data="+">+
+            </div>
+          </div>
+        </div>
+        <div class="flex-row row-next border">
+          <input id="chkHyphenate" type="checkbox"></input>
+          <label for="chkHyphenate" class="flex">Перенос по слогам</label>
+        </div>
+      </div>
+    </div>
+    <div class="setup">
+      <div id="divChkTranslate" class="flex-row">
+        <input id="chkTranslate" type="checkbox"></input>
+        <label for="chkTranslate" class="flex">Использовать переводчик</label>
+      </div>
+      <div id="divTranslate" class="row">
+        <div class="row-next border" class="flex-row">
+          <div class="flex-row">
+            <label for="selProviders" class="flex">Cервис перевода:</label>
+          </div>
+          <div class="flex-row">
+            <select id="selProvider" class="select">
+              <option value="Google">Google</option>
+              <option value="GoogleApi">GoogleApi</option>
+              <option value="Yandex">Yandex</option>
+              <!-- <option value="Reverso">Reverso</option>
+              <option value="LibreTranslate">LibreTranslate</option>
+              <option value="MyMemory">MyMemory</option>
+              <option value="uLanguage">uLanguage</option>
+              <option value="DoTrans_microsoft">DoTrans (Microsoft)</option>
+              <option value="DoTrans_yandex">DoTrans (Yandex)</option>
+              <option value="DoTrans_translator">DoTrans (Translator)</option> -->
+              <!-- <option value="DeepL">DeepL</option> -->
+              <!-- <option value="Apertium">Apertium</option> -->
+              <!-- <option value="Widget_Yandex">Виджет Яндекс</option> -->
+              <!-- <option value="Widget_Google">Виджет Google</option> -->
+              <!-- <option value="Prompt">Prompt</option> -->
+              <!-- <option value="NLP_Translation">NLP Translation</option> -->
+            </select>
+          </div>
+          <div class="flex-row">
+            <label for="selLangTo" class="flex">Язык оригинала / перевода:</label>
+          </div>
+          <div>
+            <select id="selLangFrom" class="select">
+              <option value="auto">Определять автоматически</option>
+              <option value="en">Английский</option>
+              <option value="de">Немецкий</option>
+            </select>
+            <span>/</span>
+            <select id="selLangTo" class="select">
+              <option value="ru">Русский</option>
+              <option value="en">Английский</option>
+              <option value="de">Немецкий</option>
+            </select>
+          </div>
+        </div>
+        <div id="divWidget" class="flex-row row-next border">
+        </div>
+        <div id="divChkOriginal" class="flex-row row-next border">
+          <input type="checkbox" id="chkOriginal">
+          <label for="chkOriginal" class="flex">Показывать абзацы на оригинальном языке</label>
+        </div>
+      </div>
+      <div class="flex-row padding-top center relative">
+        <div class='button default-button' id="defaultOptions">Вернуть параметры по умолчанию</div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <header>
+      <div>
+      </div>
+      <div class="progress-container">
+        <div class="progress">&nbsp;</div>
+      </div>
+    </header>
+    <main class="content">
+      <div class="text-container">
+        <div class="progress">&nbsp;</div>
+        <div class="text-col">
+          <div id="rabTitle">Заголовок статьи</div>
+          <div id="rabExcerpt">Описание статьи</div>
+          <div id="rabContent">Текст статьи</div>
+        </div>
+      </div>
+      <div id="notifications" class="hidden">
+        <span id="status"></span>
+      </div>
+    </main>
+    <footer class="full-screen">
+    </footer>
+  </div>
+</body>
+
+</html>

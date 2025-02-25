@@ -1,0 +1,13 @@
+/* (c) @Mikhalych. font.css */
+
+@font-face {
+    font-family: 'standard';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: local('Awesome Font'),
+        url("./fonts/standard.woff2") format('woff2'),
+        url("./fonts/standard.woff") format('woff'),
+        url("./fonts/standard.ttf") format('ttf'),
+        url("./fonts/standard.eot") format('eot');
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="lib/modernizr-custom.js"></script>
+    <script src="lib/current-device.js"></script>-->
+    <script src="popup.js"></script>
+    <script src="reader.js"></script>
+
+    <style type="text/css">
+        button {
+            font-size: 12px;
+            height: 40px;
+            width: 120px;
+            margin: 2px;
+        }
+
+        #frameWrapper {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnRead">Включить режим чтения</button>
+    <button id="btnStopRead">Выключить режим чтения</button>
+    <div style="min-height: 6px;"></div>
+    <button id="btnGoogleTranslate">Включить Google-переводчик</button>
+    <button id="btnYandexTranslate">Включить Яндекс-переводчик</button>
+    <button id="btnThTranslate">Включить TranslateThis</button>
+    <div id="frameWrapper">
+        <iframe id="readerDoc" src="reader.html"></iframe>
+    </div>
+</body>
+
+</html>

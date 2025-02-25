@@ -1,0 +1,69 @@
+{
+   "author": "@Mikhalych",
+   "manifest_version": 3,
+   "offline_enabled": true,
+   "name": "Книжный читатель веб-страниц",
+   "description": "Позволяет просматривать веб-страницы в удобном, очищенном от \u0022мусора\u0022 виде, отформатированном по типу электронной книги.",
+   "version": "2024.01.22.1",
+   "short_name": "read-as-book",
+   "action": {
+      "default_icon": {
+         "16": "icons/read-as-book-16.png",
+         "32": "icons/read-as-book-32.png",
+         "48": "icons/read-as-book-48.png",
+         "128": "icons/read-as-book-128.png"
+            },
+      "default_title": "Режим книжного чтения",
+      "default_popup": "popup.html"
+   },
+   "icons": {
+      "16": "icons/read-as-book-16.png",
+      "32": "icons/read-as-book-32.png",
+      "48": "icons/read-as-book-48.png",
+      "128": "icons/read-as-book-128.png"
+      },
+   "background": {
+      "service_worker": "service_worker.js"
+   },
+   "content_scripts": [{
+      "all_frames": false,
+      "js": [
+         "common.js",
+         "reader/lib/Readability.js",
+         "reader/lib/Readability-readerable.js",
+         "caf/shared.js",
+         "caf/caf.js",
+         "reader/reader.js",
+         "document_end.js"
+      ],
+      "css": [
+         "rab.css"
+      ],
+      "matches": ["http://*/*", "https://*/*", "file:///*/*"],
+      "run_at": "document_end"
+   }],
+   "web_accessible_resources": [{
+      "resources": [
+         "icons/*",
+         "fonts/*",
+         "*.css",
+         "*.js",
+         "reader/*"
+      ],
+      "matches": ["http://*/*", "https://*/*"]
+   }],
+   "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+   },
+   "permissions": [
+      "scripting",
+      "webRequest",
+      "storage",
+      "tabs",
+      "activeTab",
+      "contextMenus"
+   ],
+   "host_permissions": [
+      "http://*/*", "https://*/*", "file:///*/*"
+   ]
+}

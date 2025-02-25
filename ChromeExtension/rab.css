@@ -1,0 +1,72 @@
+/* (c) @Mikhalych */
+
+/* Контейнер с книжным читателем */
+#rabContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2147483647 !important;
+}
+
+/* Кнопка активации режима чтения */
+.rab-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 64px;
+    height: 64px;
+    padding: 6px;
+    display: grid;
+    vertical-align: middle;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    background: chocolate;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 2px;
+    cursor: pointer;
+    filter: alpha(Opacity=50);
+    opacity: 0.5;
+    z-index: 2147483647 !important;
+}
+
+.rab-btn:hover {
+    filter: alpha(Opacity=100);
+    opacity: 1;
+    color: brown;
+    box-shadow: 2px;
+}
+
+.rab-btn:hover{
+    background:  lightsalmon;
+    -webkit-box-shadow: 3px 3px 8px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 3px 3px 8px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 3px 3px 8px 0px rgba(50, 50, 50, 0.75);
+}
+
+.rab-btn .rab-btn-img {
+    width: 48px;
+    height: 48px;
+}
+
+.rab-btn:hover .rab-btn-img {
+    filter: invert(5%) sepia(78%) saturate(6858%) hue-rotate(276deg) brightness(97%) contrast(101%);
+}
+
+
+@media screen and (max-width: 800px) {
+    .rab-btn {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .rab-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
